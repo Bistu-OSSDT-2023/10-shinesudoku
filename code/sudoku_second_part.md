@@ -1,4 +1,3 @@
-sudoku_second_part
 
 int main()
 {
