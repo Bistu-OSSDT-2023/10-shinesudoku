@@ -1,0 +1,32 @@
+ while (true) {
+        int row, col, num;
+        printf("请输入要填写的行、列和数字（用空格分隔）或输入-1退出游戏：\n");
+        scanf("%d %d %d", &row, &col, &num);
+        
+        if (row == -1 || col == -1 || num == -1) {
+            printf("退出游戏。\n");
+            break;
+        }
+        
+        if (row < 0 || row >= SIZE || col < 0 || col >= SIZE || num < 1 || num > 9) {
+            printf("输入无效，请重新输入。\n");
+            continue;
+        }
+
+        if (board[row][col] != 0) {
+            printf("该位置已经有数字了，请重新输入。\n");
+            continue;
+        }
+
+        if (!isValid(board, row, col, num)) {
+            printf("填写的数字不符合数独规则，请重新输入。\n");
+            continue;
+        }
+        
+        board[row][col] = num;
+        printf("当前数独状态：\n");
+        printBoard(board);
+    }
+
+    return 0;
+}
